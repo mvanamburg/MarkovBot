@@ -1,5 +1,4 @@
 # Zbot2
-# !markov doesnt actually work right now woops
 
 Python bot using discord.py.
 
