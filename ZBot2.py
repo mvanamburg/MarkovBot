@@ -18,11 +18,12 @@ async def color(ctx):
 
 @bot.command(pass_context=True) #!roll generates a random number in a user-defined range.
 async def roll(ctx, roll_min = None, roll_max = None):
-    if isinstance(roll_min, int) == True and isinstance(roll_min, int) == True:
+    try:
+        roll_min, roll_max = int(roll_min), int(roll_max)
         member = ctx.message.author
         output = roll_die(roll_min, roll_max)
         await bot.say('{0}'.format(member.mention) + str(output))
-    else:
+    except TypeError:
         await bot.say('Rolling requires two integer arguments.')
 
 @bot.command(pass_context=True)
