@@ -7,6 +7,7 @@ import markovify
 description = 'Zbot2.0.'
 bot = commands.Bot(command_prefix='!', description=description)
 
+
 def mchain(parse):
         text_model = markovify.NewlineText(parse)
         return(str(text_model.make_short_sentence(140)))
