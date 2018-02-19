@@ -5,11 +5,12 @@ from discord.ext import commands
 description = 'Zbot2.0.'
 bot = commands.Bot(command_prefix='!', description=description)
 
+
 discord_colors = discord.Color.__dict__
 colors = list(filter(lambda x: isinstance(discord_colors[x], classmethod), discord_colors))
 colors.sort()
 
-#This function gets called when the bot starts -- checks to see if roles for all colors exist and creates them if they do not.
+# This function gets called when the bot starts -- checks to see if roles for all colors exist and creates them if they do not.
 async def create_roles(server, bot):
     print("Creating roles for " + server.name)
     role_names = list(map(lambda r: r.name, server.roles))
@@ -19,7 +20,7 @@ async def create_roles(server, bot):
             await bot.create_role(server, name=color, color=getattr(discord.Color, color)())
             print("Created " + color)
 
-#!color calls this function -- Changes the color of the user's name.
+# !color calls this function -- Changes the color of the user's name.
 async def handle_color(message, author, server_roles, bot):
     words = message.split(' ')
     if len(words) != 2:
