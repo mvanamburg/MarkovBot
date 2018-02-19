@@ -16,13 +16,13 @@ async def markov_gen(author, channel, message_contents, bot):
 
     if len(message_contents) > 1:
         markov_target = message_contents[1]
+
         if author != bot:
             print (markov_target)
-
             updating_archive = open('updating_archive.log', 'w', encoding='utf-8')
 
-            async for message_contents in bot.logs_from(channel, limit=500):
-                updating_archive.write(str(author)+' '+str(message_contents)+'\n')
+            async for message in bot.logs_from(channel, limit=500):
+                updating_archive.write(str(message.author)[:-5] +' '+ str(message.content) +'\n')
 
             updating_archive.close()
 
