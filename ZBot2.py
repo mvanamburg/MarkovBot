@@ -25,7 +25,7 @@ async def roll(ctx, roll_min=None, roll_max=None):
         member = ctx.message.author
         output = roll_die(roll_min, roll_max)
         await bot.say('{0}'.format(member.mention) + str(output))
-    except TypeError:
+    except:
         await bot.say('Rolling requires two integer arguments.')
 
 
