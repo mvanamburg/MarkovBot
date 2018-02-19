@@ -1,4 +1,6 @@
 # Zbot2
+# !markov doesnt actually work right now woops
+
 Python bot using discord.py.
 
 To run this program, you must create a file named "creds" containing your discord bots client id in the folder that zbot2.py is located.
