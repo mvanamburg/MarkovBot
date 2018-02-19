@@ -9,15 +9,17 @@ from modules.markov import markov_gen
 description = 'Zbot2.0.'
 bot = commands.Bot(command_prefix='!', description=description)
 
-@bot.command(pass_context=True) #!color allows a user to change the color of their name.
+
+@bot.command(pass_context=True)  # !color allows a user to change the color of their name.
 async def color(ctx):
     message = ctx.message.content
     author = ctx.message.author
     server_roles = ctx.message.server.roles
     await handle_color(message, author, server_roles, bot)
 
-@bot.command(pass_context=True) #!roll generates a random number in a user-defined range.
-async def roll(ctx, roll_min = None, roll_max = None):
+
+@bot.command(pass_context=True)  # !roll generates a random number in a user-defined range.
+async def roll(ctx, roll_min=None, roll_max=None):
     try:
         roll_min, roll_max = int(roll_min), int(roll_max)
         member = ctx.message.author
@@ -26,21 +28,22 @@ async def roll(ctx, roll_min = None, roll_max = None):
     except TypeError:
         await bot.say('Rolling requires two integer arguments.')
 
+
 @bot.command(pass_context=True)
-async def markov(ctx):#!markov uses markovify to generate sentences based on a user's discord messages.
+async def markov(ctx):  # !markov uses markovify to generate sentences based on a user's discord messages.
     message_contents = str(ctx.message.content).split(' ')
     author = ctx.message.author
     channel = ctx.message.channel
     await markov_gen(author, channel, message_contents, bot)
 
+
 @bot.event
 async def on_ready():
-    print('Logged in as'+ ' ' + bot.user.name)
+    print('Logged in as' + ' ' + bot.user.name)
     for server in bot.servers:
         await create_roles(server, bot)
-        #await refresh_roles(server)
 
-#Definitely didnt steal this part
+# Definitely didnt steal this part
 if __name__ == '__main__':
     with open("creds") as f:
         creds = f.readlines()[0].strip()
