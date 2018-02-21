@@ -29,8 +29,8 @@ async def roll(ctx, roll_min=None, roll_max=None):
         await bot.say('Rolling requires two integer arguments.')
 
 
-@bot.command(pass_context=True)
-async def markov(ctx):  # !markov uses markovify to generate sentences based on a user's discord messages.
+@bot.command(pass_context=True)  # !markov uses markovify to generate sentences based on a user's discord messages.
+async def markov(ctx):
     message_contents = str(ctx.message.content).split(' ')
     author = ctx.message.author
     channel = ctx.message.channel
